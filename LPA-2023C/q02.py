@@ -28,17 +28,19 @@ import os
 # Limpar o console
 os.system('cls') or None
 
-valor_total = 0
-valor_item = 0
+valor_total = 0.00
+valor_item = 0.00
 print('Bem vindo a Loja do Fabiano Ferreira Mattoso')
-print('-' *30, 'Cardápio', '-' *30)
+print('-' *21, 'Cardápio', '-' *21)
 print('-' *6, '| Tamanho | Cupuaçu (CP) | Açaí (AC) |', '-' *6)
 print('-' *6, '|    P    |   R$ 10,00   |  R$ 12,00 |', '-' *6)
 print('-' *6, '|    M    |   R$ 15,00   |  R$ 17,00 |', '-' *6)
 print('-' *6, '|    G    |   R$ 19,00   |  R$ 21,00 |', '-' *6)
-print('-' * 60)
+print('-' * 52)
+# Loop (repetição) executada na primeira vez e enquanto o usuário digitar s/S
 while True:
     sabor = input('Entre com o sabor desejado (CP/AC): ')
+    # Independente do que o usuário digitar, o método upper() irá converter para maiúsculo.
     if (sabor.upper() == 'CP'):
         nome_sabor = 'CUPUAÇU'
     elif (sabor.upper() == 'AC'):
@@ -48,29 +50,32 @@ while True:
         continue
 
     tamanho = input('\nEntre com o tamanho desejado (P/M/G): ')
+    # Testa se o tamanho é válido e atribui o valor conforme o "cardápio"
     if (tamanho.upper() == 'P'):
         if (sabor.upper() == 'CP'):
-            valor_item = 10
+            valor_item = 10.0
         else:
-            valor_item = 12
+            valor_item = 12.0
     elif (tamanho.upper() == 'M'):
         if (sabor.upper() == 'CP'):
-            valor_item = 15
+            valor_item = 15.0
         else:
-            valor_item = 17
+            valor_item = 17.0
     elif (tamanho.upper() == 'G'):
         if (sabor.upper() == 'CP'):
-            valor_item = 19
+            valor_item = 19.0
         else:
-            valor_item = 21        
+            valor_item = 21.0      
     else:
         print('Tamanho inválido. Tente novamente')
         continue
 
-    print('Você pediu ', nome_sabor, ' no tamanho ', tamanho.upper(), ': R$ ', valor_item)
+    # Exibe o valor decimal formatado com duas casas decimais.
+    print('Você pediu ', nome_sabor, ' no tamanho ', tamanho.upper(), ': R$ %.2f' % valor_item)
     valor_total += valor_item
     continua = input('Deseja mais alguma coisa (s/digite outra tecla)?: ')
     if (continua.lower() != 's'):
         break
 
-print('\nO valor total a ser pago: R$ ', valor_total)
+print('\nO valor total a ser pago: R$ %.2f' % valor_total)
+# Fim do programa
