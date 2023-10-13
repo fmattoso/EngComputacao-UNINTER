@@ -23,7 +23,11 @@ def escolha_servico() -> float:
 
 def num_pagina() -> float:
     while True:
-        paginas = int(input('\nEntre com o número de páginas: '))
+        try:
+            paginas = int(input('\nEntre com o número de páginas: '))
+        except:
+            print('Você digitou um valor inválido para o número de páginas')
+            continue
         if paginas < 10:
             # forçando o retorno como um float
             return paginas * 1.0
@@ -43,7 +47,12 @@ def servico_extra() -> float:
         print('1 - Encadernação Simples - R$ 10,00')
         print('2 - Encadernação Capa Dura - R$ 25,00')
         print('0 - Não desejo mais nada')
-        servico = int(input('>>'))
+        try:
+            servico = int(input('>>'))
+        except:
+            # Vai selecionar o 'else:'
+            servico = -1
+
         if (servico == 1):
             return 10.00
         elif (servico == 2):
